@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glucose-turbidity-ml"
+version = "0.1.0"
+description = "Research code for paired glucose and turbidity signals, with a fully synthetic demonstration"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+  "numpy>=1.26,<3",
+  "pandas>=2.2,<4",
+  "scikit-learn>=1.4,<2",
+  "matplotlib>=3.8,<4",
+  "PyYAML>=6,<7",
+]
+
+[project.optional-dependencies]
+neural = ["torch>=2.5,<3"]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[project.scripts]
+glu-ntu-demo = "cmp.demo:main"
+
+[project.urls]
+Repository = "https://github.com/yzdeng1417/glucose-turbidity-ml"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cmp = ["feature_schema.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }]

@@ -1,0 +1,26 @@
+version: 1
+label: growth
+blocks:
+  - name: species
+    kind: onehot
+    prefix: species_
+    mutually_exclusive: true
+  - name: antibiotic
+    kind: onehot
+    prefix: antibiotic_
+    # antibiotic_concentration_* is a separate block, so we exclude that prefix
+    exclude_prefix: antibiotic_concentration_
+    mutually_exclusive: false
+  - name: concentration
+    kind: onehot
+    prefix: antibiotic_concentration_
+    mutually_exclusive: true
+    ordinal_hint: true
+  - name: glu
+    kind: timeseries
+    prefix: glu_time
+    time_axis: time
+  - name: ntu
+    kind: timeseries
+    prefix: ntu_time
+    time_axis: time
