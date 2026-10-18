@@ -8,6 +8,7 @@ import pytest
 from cmp.dataset import load_cmp_tsv
 from cmp.demo import run
 from cmp.evaluation import select_threshold
+from cmp.example_data import load_demo_data
 from cmp.scaling import _fit_stats, _standardize
 from cmp.synthetic import make_synthetic
 from cmp.workflow import grouped_splits, make_baseline, subset
@@ -60,30 +61,33 @@ def test_complete_demo_hashes_split_audit_and_overwrite_guard(tmp_path):
     manifest = json.loads((out / "run_manifest.json").read_text())
     assert result["data_kind"] == "synthetic"
     assert result["threshold"]["heldout_used"] is False
-    assert manifest["counts"] == {"development_rows": 288, "heldout_rows": 96, "development_groups": 36, "heldout_groups": 12}
+    assert manifest["counts"] == {"development_rows": 1794, "heldout_rows": 459, "development_groups": 48, "heldout_groups": 12}
+    assert manifest["dataset"]["dataset_id"] == "calibrated-synthetic-v1"
+    assert manifest["configuration"]["time_step"] == 15.0
+    assert manifest["dataset"]["sha256"]["synthetic.tsv"] == hashlib.sha256((out / "synthetic_features.tsv").read_bytes()).hexdigest()
     for name, digest in manifest["artifact_sha256"].items():
         assert hashlib.sha256((out / name).read_bytes()).hexdigest() == digest
     audit = pd.read_csv(out / "split_audit.tsv", sep="\t")
     heldout = pd.read_csv(out / "synthetic_holdout.tsv", sep="\t")
     assert not set(audit.group_id) & set(heldout.group_id)
     assert audit.groupby(["fold", "group_id"]).role.nunique().eq(1).all()
-    assert (audit.role == "outer_validation").sum() == 288
+    assert (audit.role == "outer_validation").sum() == 1794
     with pytest.raises(FileExistsError):
         run(out)
 
 
 def test_heldout_labels_cannot_change_model_scores_or_selected_threshold(tmp_path, monkeypatch):
-    original = make_synthetic
+    original = load_demo_data
     first = tmp_path / "original"
     result = run(first)
 
-    def flip_heldout_labels(**kwargs):
-        frame, metadata = original(**kwargs)
+    def flip_heldout_labels(*args, **kwargs):
+        frame, metadata, provenance = original(*args, **kwargs)
         rows = metadata.split.eq("heldout")
         frame.loc[rows, "growth"] = 1 - frame.loc[rows, "growth"]
-        return frame, metadata
+        return frame, metadata, provenance
 
-    monkeypatch.setattr("cmp.demo.make_synthetic", flip_heldout_labels)
+    monkeypatch.setattr("cmp.demo.load_demo_data", flip_heldout_labels)
     changed = tmp_path / "changed_labels"
     changed_result = run(changed)
     assert result["threshold"] == changed_result["threshold"]

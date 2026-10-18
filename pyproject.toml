@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "glucose-turbidity-ml"
-version = "0.1.0"
+version = "0.2.0"
 description = "Research code for paired glucose and turbidity signals, with a fully synthetic demonstration"
 readme = "README.md"
 license = "MIT"
@@ -31,7 +31,7 @@ Repository = "https://github.com/yzdeng1417/glucose-turbidity-ml"
 where = ["src"]
 
 [tool.setuptools.package-data]
-cmp = ["feature_schema.yaml"]
+cmp = ["feature_schema.yaml", "data/calibrated-v1/*.tsv", "data/calibrated-v1/manifest.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

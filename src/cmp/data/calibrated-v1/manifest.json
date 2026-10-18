@@ -1,0 +1,32 @@
+{
+  "dataset_id": "calibrated-synthetic-v1",
+  "data_kind": "synthetic",
+  "rows": 2253,
+  "groups": 60,
+  "development_rows": 1794,
+  "heldout_rows": 459,
+  "development_groups": 48,
+  "heldout_groups": 12,
+  "label_origin": "simulated_endpoint_label",
+  "time_points": [
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135
+  ],
+  "time_unit": "min",
+  "time_step": 15.0,
+  "signal_unit": "input-table units",
+  "provenance": "New observations and labels synthesized using aggregate properties fitted locally on a pure-culture development dataset.",
+  "method": "Paired four-factor hierarchical copula with pooled marginal quantiles and group/series dependence.",
+  "scope": "Fixed software example; no experimental records, calibration parameters or real-data comparison assets included.",
+  "limitations": "Not a manuscript reproduction or clinical validation dataset; no formal privacy guarantee is claimed.",
+  "sha256": {
+    "synthetic.tsv": "ea7e66be8c856d6e9b6758ae363939033c1442383c9dcc2d5b08554b8e650e28",
+    "synthetic_metadata.tsv": "550dbc2f85fa0653db16f54603d570eaccccf9940240e56fb3c85becfca7a57c"
+  }
+}

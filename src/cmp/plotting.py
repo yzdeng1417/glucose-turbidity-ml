@@ -8,17 +8,19 @@ import numpy as np
 from sklearn.metrics import confusion_matrix, roc_curve
 
 
-def plot_report(raw, heldout, threshold, path):
+def plot_report(raw, heldout, threshold, path, *, time_points=None, time_unit="toy index", signal_unit="arbitrary signal units"):
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10})
     fig, axes = plt.subplots(2, 2, figsize=(10, 7), layout="constrained")
     colors = {0: "#637b92", 1: "#d18145"}
+    time_points = list(range(1, 9)) if time_points is None else time_points
     for ax, channel, title in zip(axes[0], ("glu", "ntu"), ("Glucose-like signal", "Turbidity-like signal")):
         for label in (0, 1):
-            traces = raw.loc[raw.growth.eq(label)].head(10)
+            candidates = raw.loc[raw.growth.eq(label)]
+            traces = candidates.sample(n=min(10, len(candidates)), random_state=0)
             values = traces[[f"{channel}_time{i}" for i in range(1, 9)]].to_numpy()
-            ax.plot(range(1, 9), values.T, color=colors[label], alpha=0.35, linewidth=1)
+            ax.plot(time_points, values.T, color=colors[label], alpha=0.35, linewidth=1)
             ax.plot([], [], color=colors[label], label=f"Synthetic label {label}")
-        ax.set(title=title, xlabel="Toy time index", ylabel="Arbitrary signal units")
+        ax.set(title=title, xlabel=f"Time ({time_unit})", ylabel=signal_unit)
         ax.legend(frameon=False, fontsize=8)
     false_positive, true_positive, _ = roc_curve(heldout.growth, heldout.score)
     axes[1, 0].plot(false_positive, true_positive, color="#207f83", linewidth=2)
