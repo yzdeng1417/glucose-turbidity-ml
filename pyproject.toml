@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "glucose-turbidity-ml"
 version = "0.2.0"
-description = "Research code for paired glucose and turbidity signals, with a fully synthetic demonstration"
+description = "Paired glucose-turbidity analysis of bacterial responses to antibiotics, with synthetic examples"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"

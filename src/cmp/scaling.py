@@ -1,4 +1,4 @@
-"""Training-only time-series scaling extracted from the research implementation."""
+"""Time-series scaling fitted on training observations only."""
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Sequence

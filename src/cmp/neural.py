@@ -1,8 +1,4 @@
-"""CPU trainer with group-separated optimization and early stopping.
-
-Extracted from the research implementation. The public demo supplies its own
-small configuration; no study protocol, fitted weights or results are bundled.
-"""
+"""CPU trainer with group-separated optimization and early stopping."""
 from __future__ import annotations
 import copy
 from dataclasses import asdict

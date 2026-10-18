@@ -1,10 +1,29 @@
-# Glucose–turbidity research code
+# Glucose–turbidity analysis of bacterial drug responses
 
 [![Checks](https://github.com/yzdeng1417/glucose-turbidity-ml/actions/workflows/checks.yml/badge.svg)](https://github.com/yzdeng1417/glucose-turbidity-ml/actions/workflows/checks.yml)
 
-A reproducible Python demonstration for learning from paired glucose and turbidity time series. It combines selected research components with a fixed synthetic example calibrated locally to aggregate properties of pure-culture development data. The complete example runs from the packaged synthetic files, without access to experimental data or fitted calibration parameters.
+An open-source Python toolkit for studying bacterial responses to antibiotics through paired glucose (GLU) and turbidity (NTU) time series. Its long-term goal is to support better-informed antibiotic choices for individual patients, helping them receive effective treatment while avoiding unnecessary drug exposure.
 
-The prediction target is a **binary growth label per observation**. It is separate from an MIC estimate or a susceptible/resistant clinical category. All included examples and plotted results are synthetic; they demonstrate software behavior, not experimental performance.
+The toolkit connects paired response trajectories with growth-endpoint classification, using species, drug and concentration context. A runnable synthetic example demonstrates the analysis from input checks to grouped evaluation.
+
+## Biological rationale
+
+Glucose utilization and changes in culture turbidity describe different aspects of bacterial physiology:
+
+- **Glucose-related signals** provide a view of substrate utilization when interpreted with the assay's calibration and controls. Glucose use and increases in culture turbidity need not change together, which motivates studying both during antibiotic exposure.
+- **Turbidity signals** describe the optical cloudiness of a suspension and are commonly used to follow culture growth. Their relationship to cell abundance depends on measurement conditions and cell properties, including size; they are not direct counts of viable bacteria.
+
+Paired measurements let researchers ask whether a drug affects glucose-related activity and bulk growth in different ways, and whether those differences help interpret a later growth endpoint. A difference between the signals is a candidate phenotype to investigate; establishing survival, killing or a specific resistance mechanism requires additional evidence.
+
+## Research applications and future patient care
+
+Researchers can use the analysis components to examine paired trajectories across drug contexts, compare signal representations and evaluate growth-endpoint predictions while keeping repeated observations from the same group together. Applying them to experimental data requires a defined assay, reference labels and validation protocol.
+
+The intended clinical direction is phenotypic antimicrobial susceptibility testing: learning how a patient's infecting organism responds to candidate antibiotics, then evaluating whether that information can help clinicians choose appropriate treatment. For patients, the hoped-for value is less uncertainty about treatment, less exposure to ineffective or unnecessary antibiotics, and fewer avoidable medication-related harms.
+
+Reaching that goal requires independent experimental and clinical validation, comparison with reference susceptibility methods, and assessment of treatment decisions, patient outcomes and the full time from sample receipt to a usable report. The current software does not establish faster testing or improved patient outcomes.
+
+**Current example:** all included observations, labels and plotted results are synthetic. The prediction target is a **binary growth label per observation**, separate from a minimum inhibitory concentration (MIC) estimate or a clinical susceptibility category. The example demonstrates research software and is not validated for treatment decisions.
 
 ![Synthetic workflow preview](docs/demo-preview.png)
 
@@ -26,11 +45,11 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead. `pyth
 
 Open `outputs/demo/report.png` for the visual report and `outputs/demo/metrics.json` for machine-readable results. Runs refuse to overwrite an existing output directory; choose a new name when rerunning.
 
-The default uses the reviewed [calibrated synthetic example](src/cmp/data/calibrated-v1): **2,253 observations in 60 new synthetic groups**, with a fixed 48/12 group development/holdout split. Its rows, labels and split stay the same across runs; `--seed` controls cross-validation and model training. File checksums are verified before use. No dataset download or local calibration is required.
+The default uses the [calibrated synthetic example](src/cmp/data/calibrated-v1): **2,253 observations in 60 synthetic groups**, with a fixed 48/12 group development/holdout split. Its rows, labels and split stay the same across runs; `--seed` controls cross-validation and model training. File checksums are verified before use. No dataset download or local calibration is required.
 
 For a minimal installation without development tools, use `python -m pip install -e .`. The requirements file pins the tested environment, including test tools; `pyproject.toml` declares compatible dependency ranges.
 
-## What to inspect
+## Software components
 
 | Component | What it demonstrates | Code |
 |---|---|---|
@@ -42,7 +61,7 @@ For a minimal installation without development tools, use `python -m pip install
 | Fixed synthetic example | Verify packaged synthetic observations and preserve their group split | [example_data.py](src/cmp/example_data.py), [dataset manifest](src/cmp/data/calibrated-v1/manifest.json) |
 | Verification | Check leakage boundaries, input failures, transforms and complete runs | [tests/](tests/) |
 
-The lightweight default is standardized logistic regression. It provides a quick way to inspect the evaluation workflow. The optional neural path uses the extracted multi-tower research implementation, with separate groups for optimization, early stopping and outer evaluation.
+The lightweight default is standardized logistic regression. It provides a quick way to inspect the evaluation workflow. The optional multi-tower neural model combines categorical context with both signal trajectories, with separate groups for optimization, early stopping and outer evaluation.
 
 ```bash
 # Optional CPU neural example
@@ -91,13 +110,7 @@ Scores are not presented as calibrated growth probabilities. Attention weights a
 | `run_manifest.json` | Dataset provenance/checksums, time spacing, configuration, software versions, code hashes and output hashes |
 | `*.pt`, `*.history.tsv` | Neural-only checkpoints and early-stopping histories, generated locally |
 
-See [data and methods](docs/data-and-methods.md) for synthetic-data provenance, the optional toy generator, schema, limitations and relationship to the research implementation.
-
-## Scope and development
-
-This is a selected code release, not a reproduction package for a manuscript. The feature-block interface, multi-tower model, neural training components and threshold enumeration originate from the research implementation. The portable demo, synthetic-data adapters, stricter input checks and packaging adapt those components for public inspection. The fixed synthetic sample is data-calibrated; it is not a claim of anonymity or independent experimental validation. Experimental measurements, real-data comparison figures, calibration parameters, trained study weights, research results, manuscript text and original repository history are outside this release.
-
-This project was developed with AI assistance.
+See [data and methods](docs/data-and-methods.md) for synthetic-data provenance, the optional toy generator, schema and interpretation limits.
 
 ## License
 
