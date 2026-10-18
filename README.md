@@ -45,7 +45,7 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead. `pyth
 
 Open `outputs/demo/report.png` for the visual report and `outputs/demo/metrics.json` for machine-readable results. Runs refuse to overwrite an existing output directory; choose a new name when rerunning.
 
-The default uses the [calibrated synthetic example](src/cmp/data/calibrated-v1): **2,253 observations in 60 synthetic groups**, with a fixed 48/12 group development/holdout split. Its rows, labels and split stay the same across runs; `--seed` controls cross-validation and model training. File checksums are verified before use. No dataset download or local calibration is required.
+The default uses a [calibrated synthetic example](src/cmp/data/calibrated-v1) with separate development and held-out groups. Its rows, labels and split stay the same across runs; `--seed` controls cross-validation and model training. File checksums are verified before use. No dataset download or local calibration is required.
 
 For a minimal installation without development tools, use `python -m pip install -e .`. The requirements file pins the tested environment, including test tools; `pyproject.toml` declares compatible dependency ranges.
 
@@ -82,16 +82,16 @@ python -m ruff check .
 ## Evaluation design
 
 ```text
-60 synthetic groups, 2,253 observations
-  ├── 48 development groups / 1,794 observations
-  │     ├── 3-fold grouped out-of-fold predictions
+Synthetic example
+  ├── Development groups
+  │     ├── Grouped out-of-fold predictions
   │     │     └── select threshold by balanced accuracy
   │     └── fit final model using development data
-  └── 12 held-out synthetic groups / 459 observations
+  └── Held-out synthetic groups
         └── score after development and threshold selection
 ```
 
-These are counts in the released synthetic example, not study cohort sizes. For the neural model, each training portion is split again by group for early stopping. Time-series scaling is fitted only on optimizer rows. For the baseline, the scaler and classifier are fitted together on each training fold. Within-row centering is a separate operation that subtracts each signal's first value. The calibrated example has eight points at 15-minute intervals; derivative representations use that interval. The optional toy example retains arbitrary time steps and 48 groups with eight observations each.
+For the neural model, each training portion is split again by group for early stopping. Time-series scaling is fitted only on optimizer rows. For the baseline, the scaler and classifier are fitted together on each training fold. Within-row centering is a separate operation that subtracts each signal's first value. Derivative representations use the sampling interval recorded for the dataset; the optional toy example uses arbitrary time steps. See [data and methods](docs/data-and-methods.md) for the time axis and transformation definitions.
 
 The operating threshold is selected from pooled development out-of-fold scores, then saved before held-out prediction. Metrics on those same development scores are **threshold-selection diagnostics**, not unbiased estimates of the selected operating point. The held-out synthetic set demonstrates separation in this example; it does not establish generalization to real samples. Comparing repeated runs or choosing representations after viewing held-out results would introduce further model-selection bias.
 
