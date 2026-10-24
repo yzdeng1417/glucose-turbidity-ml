@@ -112,6 +112,10 @@ Scores are not presented as calibrated growth probabilities. Attention weights a
 
 See [data and methods](docs/data-and-methods.md) for synthetic-data provenance, the optional toy generator, schema and interpretation limits.
 
+## Experimental data collection template
+
+A [blank interlaboratory collection template](templates/interlaboratory-data-collection/) is available for recording experimental conditions, per-well paired GLU–NTU time series and independent reference results. Its instructions describe field definitions and record linkage; data entry uses de-identified specimen codes. The template is versioned separately from the synthetic software example.
+
 ## License
 
 [MIT](LICENSE).
