@@ -1,6 +1,6 @@
 # Interlaboratory data collection template
 
-**Version:** 1.0.0 · **Released:** 24 October 2026
+**Version:** 1.0
 
 [Download the blank workbook](interlaboratory_data_collection_template_v1.xlsx).
 
