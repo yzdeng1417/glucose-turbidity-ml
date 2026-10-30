@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "glucose-turbidity-ml"
-version = "0.3.0"
+version = "0.3.1"
 description = "Real-data reproduction of paired glucose-turbidity growth classification and MIC results"
 readme = "README.md"
 license = "MIT AND CC-BY-4.0"

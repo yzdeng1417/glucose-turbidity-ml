@@ -1,3 +1,2 @@
-# Preserve packaged-data checksums on Windows and Unix checkouts.
-src/cmp/data/calibrated-v1/*.tsv text eol=lf
-src/cmp/data/calibrated-v1/*.json text eol=lf
+# Frozen hashes and default-parser inputs require identical checkout bytes.
+src/cmp/data/paper-v1/* -text
