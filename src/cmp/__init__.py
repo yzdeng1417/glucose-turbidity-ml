@@ -1,3 +1,3 @@
-"""Selected CMP research components and a self-contained synthetic demo."""
+"""Paper model reproduction and an explicit synthetic teaching example."""
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"

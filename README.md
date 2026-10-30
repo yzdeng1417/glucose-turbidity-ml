@@ -2,120 +2,153 @@
 
 [![Checks](https://github.com/yzdeng1417/glucose-turbidity-ml/actions/workflows/checks.yml/badge.svg)](https://github.com/yzdeng1417/glucose-turbidity-ml/actions/workflows/checks.yml)
 
-An open-source Python toolkit for studying bacterial responses to antibiotics through paired glucose (GLU) and turbidity (NTU) time series. Its long-term goal is to support better-informed antibiotic choices for individual patients, helping them receive effective treatment while avoiding unnecessary drug exposure.
+Reproduce the paper's main growth-classification and MIC results from de-identified
+real observations with paired glucose (GLU) and turbidity (NTU) time series.
+The release includes **1,605 pure-culture observations from 43 strains** and
+**168 observations from eight BALF fluid specimens**, their manual endpoint growth
+labels, full drug context, frozen group splits, fixed predictions and MIC references.
 
-The toolkit connects paired response trajectories with growth-endpoint classification, using species, drug and concentration context. A runnable synthetic example demonstrates the analysis from input checks to grouped evaluation.
+Glucose-related signals and culture turbidity describe different aspects of
+bacterial responses to antibiotics. Studying them together may inform future
+phenotypic susceptibility testing. Their divergence does not itself establish
+survival, killing, tolerance or persistence. The model predicts a binary growth
+endpoint per observation; series-level MIC estimates are calculated separately.
+Scores are uncalibrated. This research software does not establish faster testing,
+improved patient outcomes or suitability for treatment decisions.
 
-## Biological rationale
+## Quick recomputation from saved predictions
 
-Glucose utilization and changes in culture turbidity describe different aspects of bacterial physiology:
-
-- **Glucose-related signals** provide a view of substrate utilization when interpreted with the assay's calibration and controls. Glucose use and increases in culture turbidity need not change together, which motivates studying both during antibiotic exposure.
-- **Turbidity signals** describe the optical cloudiness of a suspension and are commonly used to follow culture growth. Their relationship to cell abundance depends on measurement conditions and cell properties, including size; they are not direct counts of viable bacteria.
-
-Paired measurements let researchers ask whether a drug affects glucose-related activity and bulk growth in different ways, and whether those differences help interpret a later growth endpoint. A difference between the signals is a candidate phenotype to investigate; establishing survival, killing or a specific resistance mechanism requires additional evidence.
-
-## Research applications and future patient care
-
-Researchers can use the analysis components to examine paired trajectories across drug contexts, compare signal representations and evaluate growth-endpoint predictions while keeping repeated observations from the same group together. Applying them to experimental data requires a defined assay, reference labels and validation protocol.
-
-The intended clinical direction is phenotypic antimicrobial susceptibility testing: learning how a patient's infecting organism responds to candidate antibiotics, then evaluating whether that information can help clinicians choose appropriate treatment. For patients, the hoped-for value is less uncertainty about treatment, less exposure to ineffective or unnecessary antibiotics, and fewer avoidable medication-related harms.
-
-Reaching that goal requires independent experimental and clinical validation, comparison with reference susceptibility methods, and assessment of treatment decisions, patient outcomes and the full time from sample receipt to a usable report. The current software does not establish faster testing or improved patient outcomes.
-
-**Current example:** all included observations, labels and plotted results are synthetic. The prediction target is a **binary growth label per observation**, separate from a minimum inhibitory concentration (MIC) estimate or a clinical susceptibility category. The example demonstrates research software and is not validated for treatment decisions.
-
-![Synthetic workflow preview](docs/demo-preview.png)
-
-## Run the example
-
-Use Python 3.12. The default example runs on a CPU and does not require PyTorch.
+Use Python 3.12 or later. This mode needs no PyTorch and fits no models.
 
 ```bash
 git clone https://github.com/yzdeng1417/glucose-turbidity-ml.git
 cd glucose-turbidity-ml
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
-python -m pip install -e .
-glu-ntu-demo --output outputs/demo
+python -m pip install .
+glu-ntu-reproduce --mode saved --output outputs/paper-saved
 ```
 
-On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead. `python -m cmp` is equivalent to `glu-ntu-demo`.
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`.
+`python -m cmp` runs this real-data workflow too. The default mode is `saved`.
+Choose a new output directory for each run; existing evidence is never overwritten.
 
-Open `outputs/demo/report.png` for the visual report and `outputs/demo/metrics.json` for machine-readable results. Runs refuse to overwrite an existing output directory; choose a new name when rerunning.
+Open `report.md`, `classification_metrics.tsv`, `mic_summary.json` and
+`reconciliation.json` in the selected output directory. The command recomputes
+metrics and all MIC series from the frozen scores rather than copying the
+published summaries.
 
-The default uses a [calibrated synthetic example](src/cmp/data/calibrated-v1) with separate development and held-out groups. Its rows, labels and split stay the same across runs; `--seed` controls cross-validation and model training. File checksums are verified before use. No dataset download or local calibration is required.
+| Result | Recomputed value |
+|---|---:|
+| Pure-culture series retained | 228 |
+| Pure-culture reportable MICs, including bounds | 194/228 |
+| Pure-culture exact numeric comparison denominator | 82 |
+| Pure-culture EA (within one twofold dilution) | 72/82 |
+| Pure-culture exact agreement | 51/82 |
+| BALF reportable/comparable specimens | 4/8 |
+| BALF EA | 4/4 |
+| BALF range-adjusted exact agreement | 3/4 |
 
-For a minimal installation without development tools, use `python -m pip install -e .`. The requirements file pins the tested environment, including test tools; `pyproject.toml` declares compatible dependency ranges.
+Pure-culture outputs retain 112 bounds and 34 NR series. BALF outputs retain
+all eight specimens, with four NR results. Range-adjusted equality describes
+compatibility of reported ranges; it does not equate unknown exact MIC values.
 
-## Software components
+## Full main-model retraining
 
-| Component | What it demonstrates | Code |
-|---|---|---|
-| Input contract | Validate labels, finite values, categorical encoding and ordered time points | [dataset.py](src/cmp/dataset.py), [feature_schema.yaml](src/cmp/feature_schema.yaml) |
-| Signal representations | Raw trajectories, within-row baseline subtraction and finite differences | [representations.py](src/cmp/representations.py) |
-| Group-aware evaluation | Keep repeated observations from each group together; fit preprocessing inside training folds | [workflow.py](src/cmp/workflow.py) |
-| Neural model | Separate tabular/temporal encoders and block-attention fusion | [multitower.py](src/cmp/models/multitower.py), [neural.py](src/cmp/neural.py) |
-| Reproducibility | Save predictions, split membership, configuration, dependency versions and SHA-256 hashes | [demo.py](src/cmp/demo.py) |
-| Fixed synthetic example | Verify packaged synthetic observations and preserve their group split | [example_data.py](src/cmp/example_data.py), [dataset manifest](src/cmp/data/calibrated-v1/manifest.json) |
-| Verification | Check leakage boundaries, input failures, transforms and complete runs | [tests/](tests/) |
-
-The lightweight default is standardized logistic regression. It provides a quick way to inspect the evaluation workflow. The optional multi-tower neural model combines categorical context with both signal trajectories, with separate groups for optimization, early stopping and outer evaluation.
+Use **Python 3.12.11** and the reference dependencies. This mode actually trains
+25 outer-fold members and five final members, saves their checkpoints and
+histories, and compares new scores, calls, fit epochs, metrics and every MIC
+record with the frozen paper evidence.
 
 ```bash
-# Optional CPU neural example
-python -m pip install -r requirements-neural.txt
-glu-ntu-demo --model neural --epochs 15 --output outputs/neural
+# In a fresh environment created with Python 3.12.11:
+python -m pip install -r requirements-paper.txt
+python -m pip install --no-deps .
+glu-ntu-reproduce --mode train --output outputs/paper-train
+```
 
-# Explore a different signal representation
-glu-ntu-demo --representation first_derivative --output outputs/first-derivative
+The paper model uses T1-centered eight-point trajectories (30–135 minutes),
+optimizer-only scaling, five grouped outer folds, seeds 42–46 and grouped early
+stopping. It directly consumes the frozen row roles, so anonymous group names
+cannot alter the folds. The main threshold is fixed at **0.5**; no threshold is
+optimized by either reproduction mode. All 30 fits use CPU and two torch threads.
 
-# Optional smaller, equation-based toy example
+The strict reconciliation policy was frozen before retraining: every member and
+ensemble score must differ by at most 1e-7, with no changed well calls or MIC
+records and matching stopping histories' best/run epochs. A mismatch preserves
+outputs and exits nonzero; labels, thresholds and folds are never adjusted to
+force a match. Different hardware/builds can fail this strict comparison even
+with the same package versions. `saved` is a quick recomputation, not full training.
+
+BALF is a **previously examined retrospective feasibility cohort**, not untouched
+external validation. Its eight specimens come from six participant groups;
+the four comparable specimens come from three groups. The 0.5 rule and temporal
+representation were adopted after reviewing existing results. Species context
+for BALF was obtained by subsequent pure-culture identification. Real no-drug
+negative labels remain intact. See [data and methods](docs/data-and-methods.md)
+for the full protocol, source limitations and MIC rules.
+
+## Files and outputs
+
+The installed package includes [the real dataset](src/cmp/data/paper-v1/), with
+SHA-256 verification, manual labels, anonymous group relations, full drug context,
+MIC qualifiers, frozen splits, fixed five-member/ensemble scores and reference
+records for reconciliation. It does not require an internal path or identity map.
+
+| Output | Contents |
+|---|---|
+| `development_predictions.tsv`, `balf_predictions.tsv` | Every well, label, score, member scores, fixed-threshold call and anonymous metadata |
+| `classification_metrics.tsv`, `development_fold_metrics.tsv` | Overall, drug-exposed, no-drug and outer-fold summaries |
+| `development_mic.tsv`, `balf_mic.tsv` | Every series, reference, range symbol, NR/exclusion reason and source public row IDs |
+| `balf_concentration_votes.tsv` | Three-well binary votes at each measured concentration |
+| `mic_summary.json`, `report.md` | Complete MIC denominators and readable real-data results |
+| `split_manifest.tsv`, `protocol.json`, `reconciliation_policy.json` | Frozen role, model and numeric comparison rules |
+| `reconciliation.json`, `run_manifest.json` | Checks, mode/fit count, environment and input/code/output hashes |
+| `models/*.pt`, `models/*.history.tsv`, `fit_summary.tsv` | Train mode only: local checkpoints, scaling, optimizer/stopping indices and epochs |
+
+## Explicit synthetic teaching examples
+
+The earlier simplified examples remain available through a separate command.
+Their labels and results are synthetic and do not reproduce paper model results.
+
+```bash
+glu-ntu-demo --output outputs/synthetic
+# Smaller equation-based example:
 glu-ntu-demo --dataset toy --seed 2026 --output outputs/toy
+# Optional simplified neural example (requires torch):
+glu-ntu-demo --model neural --epochs 15 --output outputs/synthetic-neural
+```
 
-# Run checks (neural tests are skipped when PyTorch is absent)
+![Synthetic teaching workflow preview](docs/demo-preview.png)
+
+See [synthetic data and methods](docs/synthetic-data-and-methods.md) for the
+preserved teaching protocol. The main release does not rerun all representation
+comparisons or the eight-way ablations.
+
+## Experimental data collection template
+
+The existing [blank interlaboratory collection template](templates/interlaboratory-data-collection/)
+remains available and versioned separately. It records experimental conditions,
+per-well paired GLU–NTU time series and independent references using de-identified
+specimen codes.
+
+## Checks
+
+```bash
+python -m pip install '.[dev]'
 python -m pytest -q
 python -m ruff check .
 ```
 
-## Evaluation design
+Tests cover package checksums, real cohort counts and negative controls, frozen
+group isolation, anonymous renaming, MIC bounds/skips, complete saved recomputation
+and the preserved teaching examples. Full retraining is a separate explicit run.
 
-```text
-Synthetic example
-  ├── Development groups
-  │     ├── Grouped out-of-fold predictions
-  │     │     └── select threshold by balanced accuracy
-  │     └── fit final model using development data
-  └── Held-out synthetic groups
-        └── score after development and threshold selection
-```
+## Licenses and attribution
 
-For the neural model, each training portion is split again by group for early stopping. Time-series scaling is fitted only on optimizer rows. For the baseline, the scaler and classifier are fitted together on each training fold. Within-row centering is a separate operation that subtracts each signal's first value. Derivative representations use the sampling interval recorded for the dataset; the optional toy example uses arbitrary time steps. See [data and methods](docs/data-and-methods.md) for the time axis and transformation definitions.
-
-The operating threshold is selected from pooled development out-of-fold scores, then saved before held-out prediction. Metrics on those same development scores are **threshold-selection diagnostics**, not unbiased estimates of the selected operating point. The held-out synthetic set demonstrates separation in this example; it does not establish generalization to real samples. Comparing repeated runs or choosing representations after viewing held-out results would introduce further model-selection bias.
-
-Scores are not presented as calibrated growth probabilities. Attention weights are internal model quantities and do not establish causal effects or the incremental value of combining channels. This repository is a research software example, not a clinical decision tool.
-
-## Outputs
-
-| File | Contents |
-|---|---|
-| `synthetic_features.tsv` | Packaged synthetic categorical indicators, paired signals and simulated labels; generated on demand only with `--dataset toy` |
-| `synthetic_metadata.tsv` | Synthetic row/group IDs and development/holdout membership, kept out of model inputs |
-| `split_audit.tsv` | Role of every development row in every fold; fold 0 is the final fit |
-| `threshold.json` | Selected value, selection objective and data source |
-| `development_oof.tsv`, `synthetic_holdout.tsv` | Labels, scores and predictions with synthetic IDs |
-| `metrics.json`, `report.png` | Evaluation summaries, explicitly marked synthetic |
-| `run_manifest.json` | Dataset provenance/checksums, time spacing, configuration, software versions, code hashes and output hashes |
-| `*.pt`, `*.history.tsv` | Neural-only checkpoints and early-stopping histories, generated locally |
-
-See [data and methods](docs/data-and-methods.md) for synthetic-data provenance, the optional toy generator, schema and interpretation limits.
-
-## Experimental data collection template
-
-A [blank interlaboratory collection template](templates/interlaboratory-data-collection/) is available for recording experimental conditions, per-well paired GLU–NTU time series and independent reference results. Its instructions describe field definitions and record linkage; data entry uses de-identified specimen codes. The template is versioned separately from the synthetic software example.
-
-## License
-
-[MIT](LICENSE).
+Code and the existing synthetic teaching example remain [MIT](LICENSE).
+The new real dataset is [CC BY 4.0](LICENSE-DATA). Credit
+**glucose-turbidity-ml data contributors (yzdeng1417)**, link to this repository
+and the license, identify `paper-centered-real-v1` and the release/commit used,
+and indicate any changes. Clinical source reports and internal identity mappings
+are not included in the public package.

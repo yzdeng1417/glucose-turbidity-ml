@@ -1,4 +1,4 @@
-from cmp.demo import main
+from cmp.reproduce import main
 
 if __name__ == "__main__":
     main()

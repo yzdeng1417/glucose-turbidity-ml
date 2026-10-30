@@ -24,6 +24,7 @@ jobs:
       - run: python -m pip install --no-deps -e .
       - run: python -m ruff check .
       - run: python -m pytest -q
+      - run: glu-ntu-reproduce --mode saved --output outputs/ci-paper-saved
       - run: glu-ntu-demo --representation first_derivative --output outputs/ci-demo
 
   neural:
