@@ -1,0 +1,9 @@
+group_id	participant_group	drug_context	reference_operator	reference_value_ug_ml	reference_mic	provenance	method
+BF001	C001	LEV	=	2	2	author_supplied	broth_recheck
+BF002	C002	LEV			NR	clinical_communication	not_applicable
+BF003	C003	LEV	<=	2	<=2	author_supplied_correction	as_recorded
+BF004	C004	LEV	<=	1	<=1	report_image_reviewed_pairing_pending	as_recorded
+BF005	C001	LEV			NR	clinical_communication	not_applicable
+BF006	C004	LEV	<=	1	<=1	author_supplied	as_recorded
+BF007	C005	LEV			NR	clinical_communication	not_applicable
+BF008	C006	LEV			NR	clinical_communication	not_applicable

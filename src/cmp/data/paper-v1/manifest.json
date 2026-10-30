@@ -1,0 +1,34 @@
+{
+  "dataset_id": "paper-centered-real-v1",
+  "synthetic": false,
+  "license": "CC-BY-4.0",
+  "attribution": "glucose-turbidity-ml data contributors (yzdeng1417)",
+  "source": "https://github.com/yzdeng1417/glucose-turbidity-ml",
+  "development": {
+    "rows": 1605,
+    "groups": 43,
+    "growth": 961
+  },
+  "balf": {
+    "rows": 168,
+    "groups": 8,
+    "growth": 21
+  },
+  "files": {
+    "balf.tsv": "f2491d35a3f4f60b8c797dd5d52cdcf16c0eda82efcdca9f59d4b20d034fd899",
+    "balf_comparators.tsv": "d711070d8210925f27da6688e4999ed6d71bc44db4ab01c2e0df4771de2efc95",
+    "balf_expected_mic.tsv": "2bd0f8ac98c3fd38e886aac2d124c26505f0998d1a740f9088155128c70bd293",
+    "balf_metadata.tsv": "30c2c3d19343fd303816b6879a6067ce077307fd492dff9930744c46b591c27f",
+    "balf_saved_predictions.tsv": "ed967371a82f62cb1fedc4b049f3d92a95f7b271c5d95e7c3595b02ed788b256",
+    "development.tsv": "af3998fac77f6c7566e257101649f7c60a202dfcb45da3c159a5b1ef1f12b049",
+    "development_expected_mic.tsv": "7a4ab19a5829bde48c695022174e72dcfe0698cf2b2e5d08fec981e2f396bdb2",
+    "development_metadata.tsv": "998de4ce2437b31a894f3b18aee4561bfcb74b177656343bbf4ac2ffbd092f87",
+    "development_saved_predictions.tsv": "0cb63f3e933c02ada9a6a3f841d71fd6169a4c076a698a4f27ce936b43e4115f",
+    "expected_fit_summary.tsv": "58d66eedb390644ff21e2fd92be9be088dc882185b97e04a0dcae9ac6ea68da2",
+    "protocol.json": "d312e62f52b099cb04250c670f9e86c98780cd5cc89edb19fc036485974d4117",
+    "reconciliation_policy.json": "0b30fc156d2e51cd4bada8361f1c230230b9589634ba6885bc1835dc97a26015",
+    "split_manifest.tsv": "c473716cf2b56cdf4f7232784d7e4cc1910cd8dbc4e5c3d620dd3fd552ac0b7b"
+  },
+  "precision": "feature matrices copied byte-for-byte; frozen score tokens preserved",
+  "deidentification": "anonymous row/group/participant relations; no calendar dates or source identity fields"
+}

@@ -1,0 +1,9 @@
+group_id	drug_context	predicted_mic_as_reported	prediction_mic_rule	skipped_concentration_count	predicted_mic_reportable	not_reportable_reasons	hospital_mic_operator	hospital_mic_calculation_value_ug_ml	comparable_under_author_rule	offscale_adjusted_dilution_difference	exact_agreement_after_offscale_adjustment	essential_agreement_after_offscale_adjustment
+BF001	LEV	1	next_measured_after_highest_growth	0	True		=	2.0	True	-1.0	False	True
+BF002	LEV	NR	control_no_growth	0	False	observed_control_no_growth;prediction_control_no_growth			False			
+BF003	LEV	1	next_measured_after_highest_growth	0	True		<=	2.0	True	0.0	True	True
+BF004	LEV	≤0.5	all_exposed_no_growth_lower_limit	0	True		<=	1.0	True	0.0	True	True
+BF005	LEV	NR	control_no_growth	0	False	observed_control_no_growth;prediction_control_no_growth			False			
+BF006	LEV	≤0.5	all_exposed_no_growth_lower_limit	0	True		<=	1.0	True	0.0	True	True
+BF007	LEV	NR	control_no_growth	0	False	observed_control_no_growth;prediction_control_no_growth			False			
+BF008	LEV	NR	control_no_growth	0	False	observed_control_no_growth;prediction_control_no_growth			False			

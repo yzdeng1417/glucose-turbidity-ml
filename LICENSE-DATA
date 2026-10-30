@@ -1,0 +1,19 @@
+Real paper data license: Creative Commons Attribution 4.0 International
+SPDX-License-Identifier: CC-BY-4.0
+
+The files under src/cmp/data/paper-v1/ are licensed under the Creative
+Commons Attribution 4.0 International License (CC BY 4.0).
+
+Copyright: glucose-turbidity-ml data contributors (yzdeng1417).
+
+License text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+When sharing or adapting these data, credit "glucose-turbidity-ml data
+contributors (yzdeng1417)", link to
+https://github.com/yzdeng1417/glucose-turbidity-ml and this license, identify
+the dataset version (paper-centered-real-v1) and release/commit used, and
+indicate changes. Attribution does not imply endorsement.
+
+Code and the pre-existing synthetic teaching example remain under the
+MIT license in LICENSE. Clinical source reports and internal identity
+mappings are not included in or licensed by this public package.

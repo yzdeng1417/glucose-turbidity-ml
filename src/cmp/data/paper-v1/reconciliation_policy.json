@@ -1,0 +1,17 @@
+{
+  "fixed_before_first_train": true,
+  "score_max_absolute_error": 1e-07,
+  "scope": "every member score and ensemble score in both cohorts",
+  "changed_binary_calls_allowed": 0,
+  "changed_mic_records_allowed": 0,
+  "fit_epochs_must_match": true,
+  "classification_metric_absolute_error": 1e-12,
+  "environment": {
+    "python": "3.12.11",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "sklearn": "1.6.1",
+    "torch": "2.10.0"
+  },
+  "failure_policy": "retain all outputs, report mismatch and exit nonzero; never adjust labels, threshold or roles"
+}

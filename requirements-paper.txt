@@ -1,0 +1,11 @@
+# Strict paper training reference: Python 3.12.11, CPU, two torch threads.
+# Use the saved mode with the normal package dependencies if training is not needed.
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==2.3.5
+pandas==2.3.3
+scikit-learn==1.6.1
+scipy==1.16.3
+torch==2.10.0 ; sys_platform == 'darwin'
+torch==2.10.0+cpu ; sys_platform != 'darwin'
+matplotlib==3.10.7
+PyYAML==6.0.3

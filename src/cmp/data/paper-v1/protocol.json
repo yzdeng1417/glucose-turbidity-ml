@@ -1,0 +1,101 @@
+{
+  "development": {
+    "rows": 1605,
+    "isolate_groups": 43,
+    "include_no_drug_controls": true,
+    "report_subsets": [
+      "all",
+      "drug_exposed",
+      "no_drug_control"
+    ]
+  },
+  "outer_cv": {
+    "splitter": "StratifiedGroupKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "seed": 42,
+    "group_column": "group_id"
+  },
+  "ensemble": {
+    "member_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "aggregation": "arithmetic_mean_of_member_scores",
+    "bagging_fraction": 1.0
+  },
+  "early_stopping": {
+    "group_splitter": "StratifiedGroupKFold",
+    "n_splits": 7,
+    "selection": "first split with both classes in optimizer and stopping partitions",
+    "metric": "roc_auc",
+    "patience": 25,
+    "minimum_improvement": 1e-05,
+    "preprocessing_fit_scope": "optimizer_training_rows_only"
+  },
+  "model": {
+    "family": "existing_cmp_attention_ensemble",
+    "encoder_out_dim": 16,
+    "encoder_dropout": 0.1,
+    "hidden_channels": 16,
+    "kernel_size": 3,
+    "curve_conv_depth": 2,
+    "curve_batch_norm": false,
+    "curve_use_diff_channel": false,
+    "fusion": "attention",
+    "attention_heads": 2,
+    "head_hidden_dim": 64,
+    "head_dropout": 0.2
+  },
+  "training": {
+    "epochs": 150,
+    "batch_size": 64,
+    "lr": 0.002,
+    "weight_decay": 0.0001,
+    "use_class_weight": true,
+    "use_weighted_sampler": false,
+    "mixup_alpha": 0.0,
+    "curve_noise_std": 0.0,
+    "lr_schedule": "none",
+    "grad_clip_norm": 5.0,
+    "device": "cpu",
+    "torch_threads": 2
+  },
+  "environment": {
+    "python": "3.12.11",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "sklearn": "1.6.1",
+    "torch": "2.10.0"
+  },
+  "protocol_id": "paper-centered-real-v1",
+  "label_definition": "manual endpoint growth label",
+  "label_version": "reviewed_growth_v1",
+  "representation": "centered",
+  "time_minutes_after_addition": [
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135
+  ],
+  "threshold": {
+    "value": 0.5,
+    "selection": "author-approved after reviewing development and BALF results",
+    "historical_oof_selected_value_not_used": 0.49322897344827654
+  },
+  "balf": {
+    "rows": 168,
+    "samples": 8,
+    "participant_groups": 6,
+    "status": "previously examined retrospective feasibility cohort",
+    "species_context": "identified by subsequent pure culture"
+  },
+  "split_source": "frozen row roles, never regenerated after anonymization"
+}

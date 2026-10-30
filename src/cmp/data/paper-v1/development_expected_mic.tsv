@@ -1,0 +1,229 @@
+group_id	drug_context	predicted_mic	predicted_status	predicted_reportable	prediction_rule	prediction_skips	prediction_NR_reasons	reference_mic	numeric_comparison_exclusions	numeric_comparable	exact_agreement	within_one_twofold
+PC002	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC002	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC002	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC003	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC003	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC003	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC004	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC004	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC004	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC001	AMP_SUL	64	=	True	next_measured_after_highest_growth	0		64		True	True	True
+PC001	CIP	2	=	True	next_measured_after_highest_growth	0		1		True	False	True
+PC001	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.5	prediction_censored	False		
+PC005	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC005	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC005	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC006	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC006	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC006	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC007	AMP_SUL	<=1	<=	True	all_exposed_no_growth_lower_limit	0		2	prediction_censored	False		
+PC007	AZT	NR	NR	False	control_no_growth	0	predicted_control_no_growth	1	prediction_not_reportable	False		
+PC007	CFZ	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC007	CIP	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC007	CRO	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC007	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.5	prediction_censored	False		
+PC033	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC033	CIP	NR	NR	False	multiple_skipped_concentrations	3	multiple_skipped_concentrations	0.25	prediction_not_reportable	False		
+PC033	CRO	2	=	True	next_measured_after_highest_growth	0		8		True	False	False
+PC033	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC033	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC033	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC008	AMP_SUL	32	=	True	next_measured_after_highest_growth	0		32		True	True	True
+PC008	AZT	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC008	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC008	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC008	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC008	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC009	AMP_SUL	32	=	True	next_measured_after_highest_growth	0		32		True	True	True
+PC009	AZT	32	=	True	next_measured_after_highest_growth	0		32		True	True	True
+PC009	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC009	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC009	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC009	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC010	AMP_SUL	64	=	True	next_measured_after_highest_growth	0		64		True	True	True
+PC010	AZT	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC010	CFZ	16	=	True	next_measured_after_highest_growth	0		32		True	False	True
+PC010	CIP	0.5	=	True	next_measured_after_highest_growth	0		0.5		True	True	True
+PC010	CRO	8	=	True	next_measured_after_highest_growth	0		2		True	False	False
+PC010	LEV	1	=	True	next_measured_after_highest_growth	0		1		True	True	True
+PC011	AMP_SUL	32	=	True	next_measured_after_highest_growth	0		32		True	True	True
+PC011	AZT	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC011	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC011	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC011	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC011	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC012	AMP_SUL	16	=	True	next_measured_after_highest_growth	0		16		True	True	True
+PC012	AZT	64	=	True	next_measured_after_highest_growth	0		1		True	False	False
+PC012	CFZ	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC012	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC012	CRO	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC012	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC013	AMP_SUL	16	=	True	next_measured_after_highest_growth	0		8		True	False	True
+PC013	AZT	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC013	CFZ	8	=	True	next_measured_after_highest_growth	0		4		True	False	True
+PC013	CIP	1	=	True	next_measured_after_highest_growth	0		0.5		True	False	True
+PC013	CRO	4	=	True	next_measured_after_highest_growth	0		2		True	False	True
+PC013	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC014	AMP_SUL	64	=	True	next_measured_after_highest_growth	0		64		True	True	True
+PC014	AZT	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC014	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC014	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC014	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC014	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC015	AMK	<=2	<=	True	all_exposed_no_growth_lower_limit	0		2	prediction_censored	False		
+PC015	AMK_LEV	<=1	<=	True	all_exposed_no_growth_lower_limit	0		0.5	prediction_censored	False		
+PC015	AMP_SUL	16	=	True	next_measured_after_highest_growth	0		8		True	False	True
+PC015	CFZ	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC015	CIP	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC015	CRO	8	=	True	next_measured_after_highest_growth	0		4		True	False	True
+PC015	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.5	prediction_censored	False		
+PC015	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	32	prediction_not_reportable	False		
+PC016	AMK	<=2	<=	True	all_exposed_no_growth_lower_limit	0		2	prediction_censored	False		
+PC016	AMK_LEV	32	=	True	next_measured_after_highest_growth	0		8		True	False	False
+PC016	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC016	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC016	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC016	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC016	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC016	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	64	prediction_not_reportable	False		
+PC017	AMK	<=2	<=	True	all_exposed_no_growth_lower_limit	0		2	prediction_censored	False		
+PC017	AMK_LEV	<=1	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC017	AMP_SUL	16	=	True	next_measured_after_highest_growth	0		8		True	False	True
+PC017	CFZ	4	=	True	next_measured_after_highest_growth	0		2		True	False	True
+PC017	CIP	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC017	CRO	4	=	True	next_measured_after_highest_growth	0		2		True	False	True
+PC017	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC017	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	32	prediction_not_reportable	False		
+PC018	AMK	>32	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC018	AMK_LEV	32	=	True	next_measured_after_highest_growth	0		8		True	False	False
+PC018	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC018	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC018	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC018	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC018	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC018	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	32	prediction_not_reportable	False		
+PC019	AMK	>32	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC019	AMK_LEV	32	=	True	next_measured_after_highest_growth	0		8		True	False	False
+PC019	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC019	CFZ	32	=	True	next_measured_after_highest_growth	0		32		True	True	True
+PC019	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC019	CRO	16	=	True	next_measured_after_highest_growth	0		8		True	False	True
+PC019	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC019	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	64	prediction_not_reportable	False		
+PC020	AMP_SUL	32	=	True	next_measured_after_highest_growth	0		16		True	False	True
+PC020	CFZ	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC020	CIP	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC020	CRO	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC020	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC020	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	64	prediction_not_reportable	False		
+PC021	AMK	>32	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC021	AMK_LEV	4	=	True	next_measured_after_highest_growth	0		2		True	False	True
+PC021	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC021	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC021	CIP	2	=	True	next_measured_after_highest_growth	0		2		True	True	True
+PC021	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC021	LEV	2	=	True	next_measured_after_highest_growth	0		2		True	True	True
+PC021	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	64	prediction_not_reportable	False		
+PC022	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC022	CFZ	32	=	True	next_measured_after_highest_growth	0		64		True	False	True
+PC022	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC022	CRO	16	=	True	next_measured_after_highest_growth	0		16		True	True	True
+PC022	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC022	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	64	prediction_not_reportable	False		
+PC023	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC023	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC023	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC023	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC023	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC023	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	128	prediction_not_reportable	False		
+PC024	AMP_SUL	16	=	True	next_measured_after_highest_growth	0		8		True	False	True
+PC024	CFZ	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC024	CIP	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC024	CRO	2	=	True	next_measured_after_highest_growth	0		2		True	True	True
+PC024	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.5	prediction_censored	False		
+PC024	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC025	AMP_SUL	32	=	True	next_measured_after_highest_growth	0		16		True	False	True
+PC025	CFZ	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC025	CIP	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC025	CRO	8	=	True	next_measured_after_highest_growth	0		2		True	False	False
+PC025	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.5	prediction_censored	False		
+PC025	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	32	prediction_not_reportable	False		
+PC026	AMP_SUL	>64	>	True	highest_tested_growth_upper_limit	0		32	prediction_censored	False		
+PC026	CFZ	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC026	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC026	CRO	>64	>	True	highest_tested_growth_upper_limit	0		64	prediction_censored	False		
+PC026	LEV	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC026	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	64	prediction_not_reportable	False		
+PC027	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC027	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC028	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC028	LEV	8	=	True	next_measured_after_highest_growth	0		4		True	False	True
+PC029	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC029	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC030	CIP	>4	>	True	highest_tested_growth_upper_limit	0		2	prediction_censored	False		
+PC030	LEV	8	=	True	next_measured_after_highest_growth	0		0.5		True	False	False
+PC031	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC031	LEV	8	=	True	next_measured_after_highest_growth	0		4		True	False	True
+PC032	CIP	>4	>	True	highest_tested_growth_upper_limit	0		4	prediction_censored	False		
+PC032	LEV	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC034	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC034	CIP	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC034	CRO	4	=	True	next_measured_after_highest_growth	0		4		True	True	True
+PC034	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC034	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC034	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	32	prediction_not_reportable	False		
+PC035	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC035	CIP	NR	NR	False	multiple_skipped_concentrations	2	multiple_skipped_concentrations	0.5	prediction_not_reportable	False		
+PC035	CRO	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC035	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC035	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.5	prediction_censored	False		
+PC035	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC036	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC036	CIP	NR	NR	False	multiple_skipped_concentrations	2	multiple_skipped_concentrations	8	prediction_not_reportable	False		
+PC036	CRO	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC036	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC036	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC036	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC037	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC037	CIP	NR	NR	False	multiple_skipped_concentrations	2	multiple_skipped_concentrations	0.5	prediction_not_reportable	False		
+PC037	CRO	16	=	True	next_measured_after_highest_growth	0		16		True	True	True
+PC037	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC037	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC037	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC038	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC038	CIP	NR	NR	False	multiple_skipped_concentrations	2	multiple_skipped_concentrations	0.5	prediction_not_reportable	False		
+PC038	CRO	16	=	True	next_measured_after_highest_growth	0		16		True	True	True
+PC038	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC038	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC038	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC039	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC039	CIP	NR	NR	False	multiple_skipped_concentrations	3	multiple_skipped_concentrations	0.5	prediction_not_reportable	False		
+PC039	CRO	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC039	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC039	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC039	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC040	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC040	CIP	NR	NR	False	multiple_skipped_concentrations	4	multiple_skipped_concentrations	0.5	prediction_not_reportable	False		
+PC040	CRO	8	=	True	next_measured_after_highest_growth	0		8		True	True	True
+PC040	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC040	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.25	prediction_censored	False		
+PC040	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
+PC041	CFZ	4	=	True	next_measured_after_highest_growth	0		8		True	False	True
+PC041	CIP	NR	NR	False	multiple_skipped_concentrations	4	multiple_skipped_concentrations	8	prediction_not_reportable	False		
+PC041	CRO	64	=	True	next_measured_after_highest_growth	0		64		True	True	True
+PC041	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC041	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		4	prediction_censored	False		
+PC041	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	8	prediction_not_reportable	False		
+PC042	CFZ	<=1	<=	True	all_exposed_no_growth_lower_limit	0		1	prediction_censored	False		
+PC042	CIP	NR	NR	False	multiple_skipped_concentrations	3	multiple_skipped_concentrations	0.5	prediction_not_reportable	False		
+PC042	CRO	16	=	True	next_measured_after_highest_growth	0		32		True	False	True
+PC042	ERY	<=0.25	<=	True	all_exposed_no_growth_lower_limit	0		8	prediction_censored	False		
+PC042	LEV	<=0.5	<=	True	all_exposed_no_growth_lower_limit	0		0.12	prediction_censored	False		
+PC042	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	8	prediction_not_reportable	False		
+PC043	CFZ	NR	NR	False	multiple_skipped_concentrations	5	multiple_skipped_concentrations	2	prediction_not_reportable	False		
+PC043	CIP	>4	>	True	highest_tested_growth_upper_limit	0		0.5	prediction_censored	False		
+PC043	CRO	16	=	True	next_measured_after_highest_growth	0		16		True	True	True
+PC043	ERY	0.5	=	True	next_measured_after_highest_growth	0		8		True	False	False
+PC043	LEV	4	=	True	next_measured_after_highest_growth	0		0.25		True	False	False
+PC043	NIT	NR	NR	False	matched_control_missing	0	observed_control_missing;predicted_control_missing	16	prediction_not_reportable	False		
