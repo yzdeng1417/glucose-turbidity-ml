@@ -2,6 +2,8 @@
 
 [![Checks](https://github.com/yzdeng1417/glucose-turbidity-ml/actions/workflows/checks.yml/badge.svg)](https://github.com/yzdeng1417/glucose-turbidity-ml/actions/workflows/checks.yml)
 
+The formal real-data reproduction release is **1.0**.
+
 Reproduce the paper's main growth-classification and MIC results from de-identified
 real observations with paired glucose (GLU) and turbidity (NTU) time series.
 The release includes **1,605 pure-culture observations from 43 strains** and
